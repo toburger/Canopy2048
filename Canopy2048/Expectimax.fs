@@ -123,9 +123,9 @@ module Expectimax =
             let scoreRes = score2 * 0.9 + score4 * 0.1
             scoreRes
 
-    let stateToArray (s : Cell list) = 
+    let stateToArray (s: State) = 
         let g = Array2D.create 4 4 0
-        s |> List.map (fun c -> Array2D.set g (c.Row-1) (c.Col-1) c.Value) |> ignore
+        s |> Seq.iter (fun c -> Array2D.set g (c.Key.Row-1) (c.Key.Col-1) c.Value)
         g
 
     let decide (state:State) =
